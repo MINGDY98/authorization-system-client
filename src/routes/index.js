@@ -1,19 +1,22 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Index from '@/components/MovieIndexPage'
-import Show from '@/components/MovieShowPage'
-Vue.use(Router)
-export const router = new Router({
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import LoginPage from '../views/LoginPage.vue';
+import SignupPage from '../views/SignupPage.vue';
+
+Vue.use(VueRouter)
+
+export const router = new VueRouter({
   mode: 'history',
-  routes: [{
-    path: '/',
-    name: 'index',
-    component: Index
-  },
-  {
-    path: '/:id',
-    name: 'show',
-    component: Show
-  }
+  routes: [
+    {
+      path: '/login',
+      name: 'loginPage',
+      component: LoginPage,
+    },
+    {
+      path: '/signup',
+      name: 'signupPage',
+      component: SignupPage,
+    }
   ]
 })

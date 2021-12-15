@@ -1,23 +1,16 @@
 <template>
-  <div id="app">
+  <div>
+    <header>
+      <router-link to="/login">로그인</router-link> |
+      <router-link to="/signup">회원가입</router-link>
+    </header>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-export default {
-  name: "App",
-  components: {},
-};
+export default {};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>

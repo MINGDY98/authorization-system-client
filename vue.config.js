@@ -8,7 +8,8 @@ module.exports = {
           '^/api': ''
         }
       }
-    }
+    },
+    overlay: false
   },
   outputDir: '../backend/public',
 }
