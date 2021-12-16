@@ -44,11 +44,14 @@ export default {
         pwd: this.password,
       };
       try {
-        const result = await loginUser(userData);
-        console.log(result);
-        this.$router.push("/main");
+        const user = await loginUser(userData);
+        console.log(user.data.data);
+
         /*         this.logMessage = `${this.id}님이 로그인하셨습니다..`;
         this.initForm(); */
+
+        this.$store.commit("setUsername", user.data.data.user_id);
+        this.$router.push("/main");
       } catch (err) {
         console.log(err, "로그인에 실패하셨습니다.");
       }
