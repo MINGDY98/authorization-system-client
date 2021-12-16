@@ -9,29 +9,21 @@
       <input id="password" type="text" v-model="password" />
     </div>
     <p v-if="!isPasswordValid">{{ passwordMessage }}</p>
-    <div>
-      <label for="nickname">nickname: </label>
-      <input id="nickname" type="text" v-model="nickname" />
-    </div>
-    <button
-      :disabled="!isUsernameValid || !isPasswordValid || !nickname"
-      type="submit"
-    >
-      회원가입
+    <button :disabled="!isUsernameValid || !isPasswordValid" type="submit">
+      로그인
     </button>
     <p>{{ logMessage }}</p>
   </form>
 </template>
 
 <script>
-import { registerUser } from "../api/index.js";
+import { loginUser } from "../api/index.js";
 import { validateEmail, validatePassword } from "../utils/validation.js";
 export default {
   data() {
     return {
       username: "",
       password: "",
-      nickname: "",
       logMessage: "",
       passwordMessage:
         "비밀번호는 8자 이상 20자 이하여야 하며, 숫자/대문자/소문자/특수문자를 모두 포함해야 합니다.",
@@ -50,13 +42,16 @@ export default {
       const userData = {
         id: this.username,
         pwd: this.password,
-        nickname: this.nickname,
       };
-      const result = await registerUser(userData);
-      console.log(result);
-      this.$router.push("/main");
-      //this.logMessage = `${this.nickname}님이 가입되었습니다.`;
-      //this.initForm();
+      try {
+        const result = await loginUser(userData);
+        console.log(result);
+        this.$router.push("/main");
+        /*         this.logMessage = `${this.id}님이 로그인하셨습니다..`;
+        this.initForm(); */
+      } catch (err) {
+        console.log(err, "로그인에 실패하셨습니다.");
+      }
     },
     initForm() {
       this.username = "";
