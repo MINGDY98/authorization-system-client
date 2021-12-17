@@ -1,26 +1,37 @@
 <template>
-  <form @submit.prevent="submitForm">
-    <div>
-      <label for="username">id: </label>
-      <input id="username" type="text" v-model="username" />
+  <div class="contents">
+    <div class="form-wrapper form-wrapper-sm">
+      <h1 class="title">Signup</h1>
+      <form @submit.prevent="submitForm" class="form">
+        <div class="info">
+          <label for="username">id: </label>
+          <input id="username" type="text" v-model="username" />
+        </div>
+        <P v-if="!isUsernameValid && username" class="warning">
+          Please enter an email address
+        </P>
+        <div>
+          <label for="password">pw: </label>
+          <input id="password" type="text" v-model="password" />
+        </div>
+        <p v-if="!isPasswordValid && password" class="warning">
+          {{ passwordMessage }}
+        </p>
+        <div>
+          <label for="nickname">nickname: </label>
+          <input id="nickname" type="text" v-model="nickname" />
+        </div>
+        <button
+          :disabled="!isUsernameValid || !isPasswordValid || !nickname"
+          type="submit"
+          class="btn"
+        >
+          회원가입
+        </button>
+        <p>{{ logMessage }}</p>
+      </form>
     </div>
-    <div>
-      <label for="password">pw: </label>
-      <input id="password" type="text" v-model="password" />
-    </div>
-    <p v-if="!isPasswordValid">{{ passwordMessage }}</p>
-    <div>
-      <label for="nickname">nickname: </label>
-      <input id="nickname" type="text" v-model="nickname" />
-    </div>
-    <button
-      :disabled="!isUsernameValid || !isPasswordValid || !nickname"
-      type="submit"
-    >
-      회원가입
-    </button>
-    <p>{{ logMessage }}</p>
-  </form>
+  </div>
 </template>
 
 <script>
