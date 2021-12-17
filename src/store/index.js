@@ -1,12 +1,13 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-
+import { getAuthFromCookie, getUserFromCookie } from '../utils/cookies';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
 
   state: {
-    username: '',
+    username: getUserFromCookie() || '',
+    token: getAuthFromCookie() || '',
   },
   getters: {
     isLogin(state) {
@@ -19,6 +20,9 @@ export default new Vuex.Store({
     },
     clearUsername(state) {
       state.username = "";
+    },
+    setToken(state, token) {
+      state.token = token;
     }
   }
 

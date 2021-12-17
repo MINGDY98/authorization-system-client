@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h1>Main</h1>
+    <div>
+      <h1>{{ $store.state.username }}님 환영합니다.</h1>
+    </div>
   </div>
 </template>
 
@@ -8,5 +10,8 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
+.h1 {
+  text-align: center;
+}
 </style>

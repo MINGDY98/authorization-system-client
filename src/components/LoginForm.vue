@@ -33,6 +33,7 @@
 <script>
 import { loginUser } from "../api/index.js";
 import { validateEmail, validatePassword } from "../utils/validation.js";
+import { saveAuthToCookie, saveUserToCookie } from "../utils/cookies";
 export default {
   data() {
     return {
@@ -53,13 +54,18 @@ export default {
   },
   methods: {
     async submitForm() {
-      const userData = {
-        id: this.username,
-        pwd: this.password,
-      };
       try {
+        const userData = {
+          id: this.username,
+          pwd: this.password,
+        };
         const user = await loginUser(userData);
+        console.log("logingg", user.data.token.token);
+        this.$store.commit("setToken", user.data.token.token);
         this.$store.commit("setUsername", user.data.data.user_id);
+        saveAuthToCookie(user.data.token.token);
+        saveUserToCookie(user.data.data.user_id);
+
         this.$router.push("/main");
       } catch (err) {
         console.log(err, "로그인에 실패하셨습니다.");
