@@ -9,7 +9,11 @@
       <input id="password" type="text" v-model="password" />
     </div>
     <p v-if="!isPasswordValid">{{ passwordMessage }}</p>
-    <button :disabled="!isUsernameValid || !isPasswordValid" type="submit">
+    <button
+      :disabled="!isUsernameValid || !isPasswordValid"
+      type="submit"
+      class="btn"
+    >
       로그인
     </button>
     <p>{{ logMessage }}</p>

@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="nav">
     <div>
       <router-link to="/" class="logo"> Main </router-link>
     </div>
@@ -32,5 +32,19 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.nav {
+  height: 60px;
+  background-color: #46508c;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+.router-link-exact-active {
+  color: pink;
+}
+a {
+  margin: 6px;
+}
 </style>
