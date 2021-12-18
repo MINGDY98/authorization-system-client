@@ -34,6 +34,9 @@ export default new Vuex.Store({
     setToken(state, token) {
       state.token = token;
     },
+    clearToken(state) {
+      state.token = '';
+    },
     setRole(state, role) {
       state.role = role;
     },

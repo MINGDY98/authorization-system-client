@@ -1,7 +1,7 @@
 <template>
   <header class="nav">
     <div>
-      <router-link to="/" class="logo"> Main </router-link>
+      <router-link :to="logoLink" class="logo"> Main </router-link>
     </div>
     <div>
       <template v-if="isUserLogin">
@@ -17,15 +17,23 @@
 </template>
 
 <script>
+import { deleteCookie } from "../../utils/cookies";
 export default {
   computed: {
     isUserLogin() {
       return this.$store.getters.isLogin;
     },
+    logoLink() {
+      return this.$store.getters.isLogin ? "/main" : "/login";
+    },
   },
   methods: {
     logoutUser() {
       this.$store.commit("clearUsername");
+      this.$store.commit("clearToken");
+      deleteCookie("auth");
+      deleteCookie("user");
+      deleteCookie("role");
       this.$router.push("/");
     },
   },

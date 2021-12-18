@@ -1,6 +1,11 @@
 <template>
   <div>
-    <admin></admin>
+    <template v-if="$store.state.role === '관리자'">
+      <admin></admin>
+    </template>
+    <template v-else>
+      <h1>{{ $store.state.username }}님 환영합니다.</h1>
+    </template>
   </div>
 </template>
 

@@ -64,6 +64,7 @@ export default {
         nickname: this.nickname,
       };
       await registerUser(userData);
+      await this.$store.dispatch("LOGIN", userData);
       this.$router.push("/main");
     },
     initForm() {
