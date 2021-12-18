@@ -21,4 +21,8 @@ function fetchUserList() {
   return instance.get('userlist');
 }
 
+/* function authorizeUser(userData) {
+  return instance.put('authorize', userData);
+} */
+
 export { registerUser, loginUser, fetchUserList };

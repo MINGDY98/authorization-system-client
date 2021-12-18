@@ -148,9 +148,6 @@ export default {
   opacity: 0.5;
   cursor: not-allowed;
 }
-.btn:hover {
-  background-color: #fc6020;
-}
 
 .title {
   margin-right: 20px;
