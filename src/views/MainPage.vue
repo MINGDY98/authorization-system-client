@@ -7,11 +7,21 @@
 </template>
 
 <script>
-export default {};
+export default {
+  created() {
+    //관리자는 user의 정보를 가져온다.
+    const role = this.$store.state.role;
+    if (role === "관리자") {
+      this.$store.dispatch("FETCH_ADMIN");
+    } else {
+      //일반유저일경우.
+    }
+  },
+};
 </script>
 
 <style scoped>
-.h1 {
+h1 {
   text-align: center;
 }
 </style>

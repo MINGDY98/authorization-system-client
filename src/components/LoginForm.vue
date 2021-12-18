@@ -33,7 +33,11 @@
 <script>
 import { loginUser } from "../api/index.js";
 import { validateEmail, validatePassword } from "../utils/validation.js";
-import { saveAuthToCookie, saveUserToCookie } from "../utils/cookies";
+import {
+  saveAuthToCookie,
+  saveUserToCookie,
+  saveRoleToCookie,
+} from "../utils/cookies";
 export default {
   data() {
     return {
@@ -60,12 +64,12 @@ export default {
           pwd: this.password,
         };
         const user = await loginUser(userData);
-        console.log("logingg", user.data.token.token);
         this.$store.commit("setToken", user.data.token.token);
         this.$store.commit("setUsername", user.data.data.user_id);
+        this.$store.commit("setRole", user.data.data.user_role);
         saveAuthToCookie(user.data.token.token);
         saveUserToCookie(user.data.data.user_id);
-
+        saveRoleToCookie(user.data.data.user_role);
         this.$router.push("/main");
       } catch (err) {
         console.log(err, "로그인에 실패하셨습니다.");

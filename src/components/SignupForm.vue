@@ -64,10 +64,8 @@ export default {
         nickname: this.nickname,
       };
       const result = await registerUser(userData);
-      console.log(result);
+      console.log("회원가입", result);
       this.$router.push("/main");
-      //this.logMessage = `${this.nickname}님이 가입되었습니다.`;
-      //this.initForm();
     },
     initForm() {
       this.username = "";

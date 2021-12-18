@@ -47,4 +47,9 @@ export default {
 a {
   margin: 6px;
 }
+.username {
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+}
 </style>
