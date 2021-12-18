@@ -63,8 +63,7 @@ export default {
         pwd: this.password,
         nickname: this.nickname,
       };
-      const result = await registerUser(userData);
-      console.log("회원가입", result);
+      await registerUser(userData);
       this.$router.push("/main");
     },
     initForm() {

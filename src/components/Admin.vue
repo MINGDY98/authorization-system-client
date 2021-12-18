@@ -38,8 +38,7 @@ export default {
         const userData = {
           id: id,
         };
-        const user = await authorizeUser(userData);
-        console.log(user, "성공");
+        await authorizeUser(userData);
         window.location.reload();
       } catch (err) {
         console.log(err);

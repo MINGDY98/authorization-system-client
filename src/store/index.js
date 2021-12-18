@@ -1,7 +1,14 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { getAuthFromCookie, getUserFromCookie, getRoleFromCookie } from '../utils/cookies';
-import { fetchUserList } from '../api/index.js';
+import {
+  getAuthFromCookie,
+  getUserFromCookie,
+  getRoleFromCookie,
+  saveAuthToCookie,
+  saveUserToCookie,
+  saveRoleToCookie
+} from '../utils/cookies';
+import { fetchUserList, loginUser } from '../api/index.js';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -44,6 +51,17 @@ export default new Vuex.Store({
         })
         .catch(error => console.log(error));
     },
+    async LOGIN({ commit }, userData) {
+      const response = await loginUser(userData);
+      console.log(response);
+      commit("setToken", response.data.token.token);
+      commit("setUsername", response.data.data.user_id);
+      commit("setRole", response.data.data.user_role);
+      saveAuthToCookie(response.data.token.token);
+      saveUserToCookie(response.data.data.user_id);
+      saveRoleToCookie(response.data.data.user_role);
+      return response.data;
+    }
   }
 
 })
