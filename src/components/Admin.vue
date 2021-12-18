@@ -13,15 +13,19 @@
         <small class="created">
           {{ item.created }}
         </small>
-        <!--         <div class="authorization">
-          <button class="btn" @click="authorize(item.user_id)">승급</button>
-        </div> -->
+        <div class="authorization">
+          <template v-if="item.user_role === '일반'">
+            <button class="btn" @click="authorize(item.user_id)">승급</button>
+          </template>
+          <template v-else> 부여됨 </template>
+        </div>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+import { authorizeUser } from "../api/index.js";
 export default {
   computed: {
     userList() {
@@ -29,13 +33,18 @@ export default {
     },
   },
   methods: {
-    /*     async authorize(id) {
+    async authorize(id) {
       try {
-        const user = await authorizeUser(id);
+        const userData = {
+          id: id,
+        };
+        const user = await authorizeUser(userData);
+        console.log(user, "성공");
+        window.location.reload();
       } catch (err) {
         console.log(err);
       }
-    }, */
+    },
   },
 };
 </script>
