@@ -12,7 +12,13 @@ export const router = new VueRouter({
   routes: [
     {
       path: '/',
-      redirect: '/login',
+      redirect: () => {
+        if (!store.getters.isLogin) {
+          return '/login';
+        } else {
+          return '/main';
+        }
+      }
     },
     {
       path: '/login',
