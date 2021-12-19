@@ -25,4 +25,12 @@ function authorizeUser(userData) {
   return instance.put('authorize', userData);
 }
 
-export { registerUser, loginUser, fetchUserList, authorizeUser };
+function sendAuthCode(userData) {
+  return instance.post('authcode', userData);
+}
+
+function verifyAuthCode(userData) {
+  return instance.post('verifycode', userData);
+}
+
+export { registerUser, loginUser, fetchUserList, authorizeUser, sendAuthCode, verifyAuthCode };

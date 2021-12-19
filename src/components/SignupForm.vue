@@ -3,12 +3,30 @@
     <div class="form-wrapper form-wrapper-sm">
       <h1 class="title">Signup</h1>
       <form @submit.prevent="submitForm" class="form">
-        <div class="info">
+        <form @submit.prevent="submitAuthCode" class="info">
           <label for="username">id: </label>
-          <input id="username" type="text" v-model="username" />
-        </div>
+          <template v-if="!checked">
+            <input id="username" type="text" v-model="username" />
+            <button :disabled="!isUsernameValid" type="submit">전송</button>
+          </template>
+          <template v-else>
+            <div class="checked">{{ this.username }}</div>
+          </template>
+        </form>
         <P v-if="!isUsernameValid && username" class="warning">
           Please enter an email address
+        </P>
+        <template v-if="!checked">
+          <form @submit.prevent="verifyCode">
+            <label for="auth">인증번호: </label>
+            <input :disabled="!send" id="auth" type="text" v-model="auth" />
+            <button :disabled="!auth" type="submit">확인</button>
+          </form>
+        </template>
+        <template v-else> 인증이완료되었습니다. </template>
+        <p>{{ this.checkMessage }}</p>
+        <P v-if="isUsernameValid && username && !auth" class="warning">
+          메일로 전송된 인증번호를 입력해주세요.
         </P>
         <div>
           <label for="password">pw: </label>
@@ -35,15 +53,19 @@
 </template>
 
 <script>
-import { registerUser } from "../api/index.js";
+import { registerUser, sendAuthCode, verifyAuthCode } from "../api/index.js";
 import { validateEmail, validatePassword } from "../utils/validation.js";
 export default {
   data() {
     return {
       username: "",
+      send: "", //메일발송유무
+      auth: "",
+      checked: false,
       password: "",
       nickname: "",
       logMessage: "",
+      checkMessage: "",
       passwordMessage:
         "비밀번호는 8자 이상 20자 이하여야 하며, 숫자/대문자/소문자/특수문자를 모두 포함해야 합니다.",
     };
@@ -57,6 +79,26 @@ export default {
     },
   },
   methods: {
+    async submitAuthCode() {
+      const userData = {
+        id: this.username,
+      };
+      this.send = await sendAuthCode(userData);
+    },
+    async verifyCode() {
+      const userData = {
+        input: this.auth,
+        id: this.username,
+      };
+      const result = await verifyAuthCode(userData);
+      if (result.data.result === "success") {
+        this.checkMessage = "";
+        this.checked = true;
+      } else {
+        //failed
+        this.checkMessage = result.data.message;
+      }
+    },
     async submitForm() {
       const userData = {
         id: this.username,
@@ -77,4 +119,12 @@ export default {
 </script>
 
 <style>
+.checked {
+  font-size: 100%;
+  width: 90%;
+  background-color: white;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 1rem;
+}
 </style>

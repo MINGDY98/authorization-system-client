@@ -118,7 +118,7 @@ export default {
 .form input {
   font-size: 100%;
   width: 90%;
-  border: 1px solid #dae1e7;
+  border: 1px solid white;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   padding: 0.5rem 0.75rem;
   margin-bottom: 1rem;
