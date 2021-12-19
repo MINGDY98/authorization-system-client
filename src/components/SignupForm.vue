@@ -7,7 +7,9 @@
           <label for="username">id: </label>
           <template v-if="!checked">
             <input id="username" type="text" v-model="username" />
-            <button :disabled="!isUsernameValid" type="submit">전송</button>
+            <button class="btn" :disabled="!isUsernameValid" type="submit">
+              전송
+            </button>
           </template>
           <template v-else>
             <div class="checked">{{ this.username }}</div>
@@ -20,7 +22,7 @@
           <form @submit.prevent="verifyCode">
             <label for="auth">인증번호: </label>
             <input :disabled="!send" id="auth" type="text" v-model="auth" />
-            <button :disabled="!auth" type="submit">확인</button>
+            <button class="btn" :disabled="!auth" type="submit">확인</button>
           </form>
         </template>
         <template v-else> 인증이완료되었습니다. </template>

@@ -80,7 +80,7 @@ export default {
   box-shadow: 0 20px 20px rgba(0, 0, 0, 0.08);
   border-radius: 3px;
   padding: 15px 15px;
-  background-color: pink;
+  background-color: #cdd3fa;
 }
 .form-wrapper.form-wrapper-sm {
   max-width: 500px;
@@ -133,5 +133,10 @@ export default {
 
 .title {
   margin-right: 20px;
+}
+
+label {
+  font-weight: 600;
+  font-size: 14px;
 }
 </style>

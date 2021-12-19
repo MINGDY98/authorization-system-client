@@ -50,7 +50,7 @@ export default {
   padding: 10px 20px;
 }
 .router-link-exact-active {
-  color: pink;
+  color: #cdd3fa;
 }
 a {
   margin: 6px;
