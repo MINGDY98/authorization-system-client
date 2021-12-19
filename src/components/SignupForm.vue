@@ -32,15 +32,12 @@
           <label for="password">pw: </label>
           <input id="password" type="text" v-model="password" />
         </div>
-        <p v-if="!isPasswordValid && password" class="warning">
-          {{ passwordMessage }}
-        </p>
         <div>
           <label for="nickname">nickname: </label>
           <input id="nickname" type="text" v-model="nickname" />
         </div>
         <button
-          :disabled="!isUsernameValid || !isPasswordValid || !nickname"
+          :disabled="!isUsernameValid || !password || !nickname"
           type="submit"
           class="btn"
         >
@@ -54,7 +51,7 @@
 
 <script>
 import { registerUser, sendAuthCode, verifyAuthCode } from "../api/index.js";
-import { validateEmail, validatePassword } from "../utils/validation.js";
+import { validateEmail } from "../utils/validation.js";
 export default {
   data() {
     return {
@@ -73,9 +70,6 @@ export default {
   computed: {
     isUsernameValid() {
       return validateEmail(this.username);
-    },
-    isPasswordValid() {
-      return validatePassword(this.password);
     },
   },
   methods: {

@@ -33,4 +33,16 @@ function verifyAuthCode(userData) {
   return instance.post('verifycode', userData);
 }
 
-export { registerUser, loginUser, fetchUserList, authorizeUser, sendAuthCode, verifyAuthCode };
+function findPwd(userData) {
+  return instance.post('findpwd', userData);
+}
+
+export {
+  registerUser,
+  loginUser,
+  fetchUserList,
+  authorizeUser,
+  sendAuthCode,
+  verifyAuthCode,
+  findPwd
+};

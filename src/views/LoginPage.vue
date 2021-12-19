@@ -1,6 +1,9 @@
 <template>
   <div>
     <login-form></login-form>
+    <div>
+      <router-link to="/findpwd" class="find">비밀번호 찾기</router-link>
+    </div>
   </div>
 </template>
 
@@ -13,5 +16,11 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.find {
+  font-size: 12px;
+  color: black;
+  display: flex;
+  justify-content: center;
+}
 </style>

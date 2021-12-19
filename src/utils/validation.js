@@ -3,10 +3,4 @@ function validateEmail(email) {
   return re.test(String(email).toLowerCase());
 }
 
-function validatePassword(pwd) {
-  var reg =
-    /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,20}$/;
-  return reg.test(pwd);
-}
-
-export { validateEmail, validatePassword };
+export { validateEmail };

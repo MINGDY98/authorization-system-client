@@ -14,11 +14,8 @@
           <label for="password">pw: </label>
           <input id="password" type="text" v-model="password" />
         </div>
-        <p v-if="!isPasswordValid && password" class="warning">
-          {{ passwordMessage }}
-        </p>
         <button
-          :disabled="!isUsernameValid || !isPasswordValid"
+          :disabled="!isUsernameValid || !password"
           type="submit"
           class="btn"
         >
@@ -31,7 +28,7 @@
 </template>
 
 <script>
-import { validateEmail, validatePassword } from "../utils/validation.js";
+import { validateEmail } from "../utils/validation.js";
 export default {
   data() {
     return {
@@ -45,9 +42,6 @@ export default {
   computed: {
     isUsernameValid() {
       return validateEmail(this.username);
-    },
-    isPasswordValid() {
-      return validatePassword(this.password);
     },
   },
   methods: {
