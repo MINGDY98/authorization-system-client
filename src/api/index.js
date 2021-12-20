@@ -37,6 +37,14 @@ function findPwd(userData) {
   return instance.post('findpwd', userData);
 }
 
+function verifyPassword(userData) {
+  return instance.post('verifypwd', userData);
+}
+
+function updatePassword(userData) {
+  return instance.post('updatepwd', userData);
+}
+
 export {
   registerUser,
   loginUser,
@@ -44,5 +52,7 @@ export {
   authorizeUser,
   sendAuthCode,
   verifyAuthCode,
-  findPwd
+  findPwd,
+  verifyPassword,
+  updatePassword
 };
