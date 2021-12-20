@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import LoginPage from '../views/LoginPage.vue';
 import SignupPage from '../views/SignupPage.vue';
+import AccountPage from '../views/AccountPage.vue';
 import FindPwdPage from '../views/FindPwdPage.vue';
 import NotFoundPage from '../views/NotFoundPage.vue';
 import MainPage from '../views/MainPage.vue';
@@ -35,6 +36,11 @@ export const router = new VueRouter({
       path: '/findpwd',
       name: 'findPwdPage',
       component: FindPwdPage,
+    },
+    {
+      path: '/account',
+      name: 'AccountPage',
+      component: AccountPage,
     },
     {
       path: '/main',

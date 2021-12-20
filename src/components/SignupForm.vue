@@ -82,7 +82,6 @@ export default {
   },
   watch: {
     username: function () {
-      //inputText프로퍼티가 계속변하기 때문에 watch에 살피다가 안되라는 단어가 나오면 삭제
       if (this.username === "") {
         this.send = "";
       }

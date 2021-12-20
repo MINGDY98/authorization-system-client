@@ -4,14 +4,30 @@
       <router-link :to="logoLink" class="logo"> Main </router-link>
     </div>
     <div>
-      <template v-if="isUserLogin">
-        <span class="username">{{ $store.state.username }}</span>
+      <div v-if="isUserLogin" class="right_nav">
+        <div
+          class="menu-wrapper"
+          @mouseover="upHere = true"
+          @mouseleave="upHere = false"
+        >
+          <div class="home">
+            <i class="fas fa-home"></i>
+            <span class="username">{{ $store.state.username }}</span>
+          </div>
+          <div class="slide_menu">
+            <router-link to="/account">
+              <button class="slide_menu_button" v-show="upHere === true">
+                계정관리
+              </button>
+            </router-link>
+          </div>
+        </div>
         <a href="javascript:;" @click="logoutUser">Logout</a>
-      </template>
-      <template v-else>
+      </div>
+      <div v-else>
         <router-link to="/login">로그인</router-link>
         <router-link to="/signup">회원가입</router-link>
-      </template>
+      </div>
     </div>
   </header>
 </template>
@@ -19,6 +35,12 @@
 <script>
 import { deleteCookie } from "../../utils/cookies";
 export default {
+  data() {
+    return {
+      slide_nav: false,
+      upHere: false,
+    };
+  },
   computed: {
     isUserLogin() {
       return this.$store.getters.isLogin;
@@ -59,5 +81,38 @@ a {
   color: white;
   font-size: 20px;
   font-weight: 600;
+}
+i {
+  color: #fc6020;
+  font-size: 2rem;
+}
+.right_nav {
+  display: flex;
+}
+.home {
+  background-color: #46508c;
+  width: 270px;
+  display: flex;
+  cursor: pointer;
+}
+.menu-wrapper {
+  display: flex;
+  align-items: center;
+}
+.slide_menu {
+  position: absolute;
+  top: 65px;
+  z-index: 1;
+  width: 270px;
+}
+.slide_menu_button {
+  width: 100%;
+  font-weight: 600;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  cursor: pointer;
+}
+span {
+  align-self: center;
 }
 </style>
