@@ -15,13 +15,21 @@
             <div class="checked">{{ this.username }}</div>
           </template>
         </form>
+        <P v-if="send === 'existed' && username" class="warning">
+          이미 존재하는 계정입니다.
+        </P>
         <P v-if="!isUsernameValid && username" class="warning">
           Please enter an email address
         </P>
         <template v-if="!checked">
           <form @submit.prevent="verifyCode">
             <label for="auth">인증번호: </label>
-            <input :disabled="!send" id="auth" type="text" v-model="auth" />
+            <input
+              :disabled="send !== 'success'"
+              id="auth"
+              type="text"
+              v-model="auth"
+            />
             <button class="btn" :disabled="!auth" type="submit">확인</button>
           </form>
         </template>
@@ -65,8 +73,6 @@ export default {
       nickname: "",
       logMessage: "",
       checkMessage: "",
-      passwordMessage:
-        "비밀번호는 8자 이상 20자 이하여야 하며, 숫자/대문자/소문자/특수문자를 모두 포함해야 합니다.",
     };
   },
   computed: {
@@ -74,12 +80,21 @@ export default {
       return validateEmail(this.username);
     },
   },
+  watch: {
+    username: function () {
+      //inputText프로퍼티가 계속변하기 때문에 watch에 살피다가 안되라는 단어가 나오면 삭제
+      if (this.username === "") {
+        this.send = "";
+      }
+    },
+  },
   methods: {
     async submitAuthCode() {
       const userData = {
         id: this.username,
       };
-      this.send = await sendAuthCode(userData);
+      const result = await sendAuthCode(userData);
+      this.send = result.data.result;
     },
     async verifyCode() {
       const userData = {

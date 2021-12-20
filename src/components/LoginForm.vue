@@ -126,9 +126,10 @@ export default {
   cursor: pointer;
   color: white;
 }
-.btn.disabled {
+.btn:disabled {
+  cursor: default;
+  color: black;
   opacity: 0.5;
-  cursor: not-allowed;
 }
 
 .title {
