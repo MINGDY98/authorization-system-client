@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import {} from "../css/common.css";
 import { validateEmail } from "../utils/validation.js";
 export default {
   data() {
@@ -68,76 +69,4 @@ export default {
 </script>
 
 <style>
-.contents {
-  max-width: 1020px;
-  margin: 0 auto;
-  padding: 0 5px;
-  width: 100%;
-}
-.form-wrapper {
-  background: white;
-  -webkit-box-shadow: 0 20px 20px rgba(0, 0, 0, 0.08);
-  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.08);
-  border-radius: 3px;
-  padding: 15px 15px;
-  background-color: #cdd3fa;
-}
-.form-wrapper.form-wrapper-sm {
-  max-width: 500px;
-  margin: 40px auto;
-  display: flex;
-}
-
-.info {
-  justify-content: center;
-}
-.form {
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-}
-.warning {
-  color: #ff4057;
-  margin: 0;
-  font-size: 9px;
-}
-
-.form label {
-  width: 100%;
-  display: block;
-  margin-bottom: 0.5rem;
-  color: #364f6b;
-  font-size: 90%;
-}
-.form input {
-  font-size: 100%;
-  width: 90%;
-  border: 1px solid white;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-  padding: 0.5rem 0.75rem;
-  margin-bottom: 1rem;
-}
-.btn {
-  font-weight: 600;
-  font-size: 14px;
-  background-color: #46508c;
-  padding: 5px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  color: white;
-}
-.btn:disabled {
-  cursor: default;
-  color: black;
-  opacity: 0.5;
-}
-
-.title {
-  margin-right: 20px;
-}
-
-label {
-  font-weight: 600;
-  font-size: 14px;
-}
 </style>

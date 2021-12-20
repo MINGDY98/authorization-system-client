@@ -15,19 +15,5 @@ export default {
 </script>
 
 <style>
-a {
-  color: white;
-  text-decoration: none;
-  font-size: 20px;
-  font-weight: 600;
-}
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
+@import "./css/common.css";
 </style>

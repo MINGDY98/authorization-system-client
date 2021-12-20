@@ -129,7 +129,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .checked {
   font-size: 100%;
   width: 90%;
@@ -137,5 +137,9 @@ export default {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   padding: 0.5rem 0.75rem;
   margin-bottom: 1rem;
+}
+
+.info {
+  margin-bottom: 18px;
 }
 </style>
