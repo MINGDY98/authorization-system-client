@@ -23,7 +23,11 @@ STOVE DEV CAMP 개인 프로젝트
 
 ### 관리자의 유저 관리 화면 (메인 화면)
 
-![image](https://user-images.githubusercontent.com/38098157/146703143-260dc88d-79fc-4947-98e5-61c511333396.png)
+![image](https://user-images.githubusercontent.com/38098157/146781222-cd6ebe4c-ded2-4dbf-8a52-c4f0c46ea0c2.png)
 
 ### 일반 유저의 메인 화면
-![image](https://user-images.githubusercontent.com/38098157/146703177-ef4521ee-1d0d-4ca7-b3e0-6d39407d4060.png)
+![image](https://user-images.githubusercontent.com/38098157/146780947-00211126-836e-4210-b8a9-0af7f1d3ac74.png)
+
+### 계정관리 화면(비밀번호 재설정)
+
+![image](https://user-images.githubusercontent.com/38098157/146780891-7ea34771-6ca4-4d5a-9428-cff843c2123a.png)
